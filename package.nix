@@ -21,7 +21,7 @@ let
   electron = electron_39;
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
-  pname = "fchat-horizon";
+  pname = "horizon";
   version = "1.35.7";
 
   src = fetchFromGitHub {
@@ -116,7 +116,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       name = "${finalAttrs.pname}";
       exec = "${finalAttrs.pname} %u";
       icon = "${finalAttrs.pname}";
-      desktopName = "F-Chat Horizon";
+      desktopName = "Horizon";
       genericName = "F-Chat Client";
       comment = finalAttrs.meta.description;
       categories = [ "Network" "Chat" "Adult" ];
