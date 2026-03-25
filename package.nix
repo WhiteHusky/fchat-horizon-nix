@@ -15,6 +15,7 @@
 , pnpmConfigHook
 , desktopToDarwinBundle
 , nix-update-script
+, fetchpatch
 }:
 
 let
@@ -51,6 +52,12 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       hash = "sha256-2W8jmf6qnmgBV6IJsCwq1IjNF5lGwRJ8q7ciH9OMZcw=";
     })
     */
+    # https://github.com/Fchat-Horizon/Horizon/pull/706
+    (fetchpatch {
+      name = "wayland-get-cursor-point-patch";
+      url = "https://github.com/Fchat-Horizon/Horizon/commit/df26d5513d8838b4f3f240a1bec5ad5979c55920.patch";
+      hash = "sha256-4clWgBTUv0AFf+CPfRiOYUmZ5Yak+FdlbIGFiDRl91k=";
+    })
   ];
 
   nativeBuildInputs = [
