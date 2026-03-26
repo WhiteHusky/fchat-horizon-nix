@@ -23,13 +23,13 @@ let
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "horizon";
-  version = "2.0.0";
+  version = "2.0.1";
 
   src = fetchFromGitHub {
     owner = "Fchat-Horizon";
     repo = "Horizon";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-eeaBOAQF023IED3j0Lr2sE2NpwCIp1PJs3picSZTszw=";
+    hash = "sha256-YP04PcZ/zz/gxCtu0SzBoazued4vZArHU0Q9r2IDxZA=";
   };
 
   pnpmWorkspaces = [ "horizon-electron" ];
@@ -52,12 +52,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       hash = "sha256-2W8jmf6qnmgBV6IJsCwq1IjNF5lGwRJ8q7ciH9OMZcw=";
     })
     */
-    # https://github.com/Fchat-Horizon/Horizon/pull/706
-    (fetchpatch {
-      name = "wayland-get-cursor-point-patch";
-      url = "https://github.com/Fchat-Horizon/Horizon/commit/df26d5513d8838b4f3f240a1bec5ad5979c55920.patch";
-      hash = "sha256-4clWgBTUv0AFf+CPfRiOYUmZ5Yak+FdlbIGFiDRl91k=";
-    })
   ];
 
   nativeBuildInputs = [
