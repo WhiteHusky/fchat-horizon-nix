@@ -6,7 +6,7 @@
 , copyDesktopItems
 , python3
 , nodejs
-, pnpm
+, pnpm_10
 , electron_39
 , imagemagick
 , dart-sass
@@ -20,6 +20,7 @@
 
 let
   electron = electron_39;
+  pnpm = pnpm_10;
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "horizon";
@@ -40,6 +41,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       version
       src
       pnpmWorkspaces;
+    # Do not use the version of pnpm that `fetchPnpmDeps` uses due to v11 changes:
+    # anonymous note: pnpm 11 […] no longer reads from the pnpm field of package.json
+    pnpm = pnpm;
     fetcherVersion = 3;
     hash = "sha256-Cf0QTHBAUhrG+wQzAQAVeG9VCHbHy+gPVMNaHBsQpdc=";
   };
