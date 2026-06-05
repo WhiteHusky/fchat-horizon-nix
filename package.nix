@@ -7,7 +7,7 @@
 , python3
 , nodejs
 , pnpm_10
-, electron_39
+, electron_40
 , imagemagick
 , dart-sass
 , writableTmpDirAsHomeHook
@@ -19,18 +19,18 @@
 }:
 
 let
-  electron = electron_39;
+  electron = electron_40;
   pnpm = pnpm_10;
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "horizon";
-  version = "2.1.4";
+  version = "2.2.0";
 
   src = fetchFromGitHub {
     owner = "Fchat-Horizon";
     repo = "Horizon";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-BSqr7zC01Lwv9yUFsn4GzFo9irElMej3pGI7kTcpPxg=";
+    hash = "sha256-OOALeS4oGhFxqU5ToEFd2lyolmNBGvTTA85hIf8Dipc=";
   };
 
   pnpmWorkspaces = [ "horizon-electron" ];
@@ -45,7 +45,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     # anonymous note: pnpm 11 […] no longer reads from the pnpm field of package.json
     pnpm = pnpm;
     fetcherVersion = 3;
-    hash = "sha256-Cf0QTHBAUhrG+wQzAQAVeG9VCHbHy+gPVMNaHBsQpdc=";
+    hash = "sha256-DgpahUkOVuQ+nrsaRYTSAvgssL03JsQ0ZnMzJiUc77w=";
   };
 
   patches = [
