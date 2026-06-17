@@ -24,13 +24,13 @@ let
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "horizon";
-  version = "2.2.0";
+  version = "2.2.1";
 
   src = fetchFromGitHub {
     owner = "Fchat-Horizon";
     repo = "Horizon";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-OOALeS4oGhFxqU5ToEFd2lyolmNBGvTTA85hIf8Dipc=";
+    hash = "sha256-5ccDaIsc+K/V/dkVEXX/oC9LeOEdQKJzKmTv0BLv9L4=";
   };
 
   pnpmWorkspaces = [ "horizon-electron" ];
