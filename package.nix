@@ -19,18 +19,22 @@
 }:
 
 let
-  electron = electron_40;
+  insecure_nixpkgs = import <nixpkgs>  {
+    # Electron release cycles, grr
+    config.permittedInsecurePackages = [ "electron-40.10.5" ];
+  };
+  electron = insecure_nixpkgs.electron_40;
   pnpm = pnpm_10;
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "horizon";
-  version = "2.2.1";
+  version = "2.3.3";
 
   src = fetchFromGitHub {
     owner = "Fchat-Horizon";
     repo = "Horizon";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-5ccDaIsc+K/V/dkVEXX/oC9LeOEdQKJzKmTv0BLv9L4=";
+    hash = "sha256-5YOJB7b9XcHITRDX/yoRSPvIIcVc6yOaIJtUrYIWo2U=";
   };
 
   pnpmWorkspaces = [ "horizon-electron" ];
@@ -45,7 +49,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     # anonymous note: pnpm 11 […] no longer reads from the pnpm field of package.json
     pnpm = pnpm;
     fetcherVersion = 3;
-    hash = "sha256-DgpahUkOVuQ+nrsaRYTSAvgssL03JsQ0ZnMzJiUc77w=";
+    hash = "sha256-VEzzqiB4tYVGgPSAfcyMbR0GdxbGW+EQeqsNpI6Qzvg=";
   };
 
   patches = [
