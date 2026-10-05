@@ -6,8 +6,8 @@
 , copyDesktopItems
 , python3
 , nodejs
-, pnpm_10
-, electron_40
+, pnpm_11
+, electron_42
 , imagemagick
 , dart-sass
 , writableTmpDirAsHomeHook
@@ -19,22 +19,24 @@
 }:
 
 let
+  /*
   insecure_nixpkgs = import <nixpkgs>  {
     # Electron release cycles, grr
     config.permittedInsecurePackages = [ "electron-40.10.5" ];
   };
-  electron = insecure_nixpkgs.electron_40;
-  pnpm = pnpm_10;
+  */
+  electron = electron_42;
+  pnpm = pnpm_11;
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "horizon";
-  version = "2.3.3";
+  version = "2.4.0";
 
   src = fetchFromGitHub {
     owner = "Fchat-Horizon";
     repo = "Horizon";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-5YOJB7b9XcHITRDX/yoRSPvIIcVc6yOaIJtUrYIWo2U=";
+    hash = "sha256-5abYA+ljTCcr+llAhrDISz8r/RP+iJ0XJrLPlS89P4A=";
   };
 
   pnpmWorkspaces = [ "horizon-electron" ];
@@ -45,11 +47,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       version
       src
       pnpmWorkspaces;
-    # Do not use the version of pnpm that `fetchPnpmDeps` uses due to v11 changes:
-    # anonymous note: pnpm 11 […] no longer reads from the pnpm field of package.json
-    pnpm = pnpm;
-    fetcherVersion = 3;
-    hash = "sha256-VEzzqiB4tYVGgPSAfcyMbR0GdxbGW+EQeqsNpI6Qzvg=";
+    fetcherVersion = 4;
+    hash = "sha256-J6GpHFSKaUPkT0OCl0+lLIEqYsFJLyaOiBYXSR3soH4=";
   };
 
   patches = [
