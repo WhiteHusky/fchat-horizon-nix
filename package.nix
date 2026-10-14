@@ -7,7 +7,7 @@
 , python3
 , nodejs
 , pnpm_11
-, electron_42
+, electron_43
 , imagemagick
 , dart-sass
 , writableTmpDirAsHomeHook
@@ -25,18 +25,18 @@ let
     config.permittedInsecurePackages = [ "electron-40.10.5" ];
   };
   */
-  electron = electron_42;
+  electron = electron_43;
   pnpm = pnpm_11;
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "horizon";
-  version = "2.4.0";
+  version = "2.4.1";
 
   src = fetchFromGitHub {
     owner = "Fchat-Horizon";
     repo = "Horizon";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-5abYA+ljTCcr+llAhrDISz8r/RP+iJ0XJrLPlS89P4A=";
+    hash = "sha256-4UMquE0YVb3cK1TZQUyjY+q1dcck3Ur1mLNoiaR9w8o=";
   };
 
   pnpmWorkspaces = [ "horizon-electron" ];
@@ -48,7 +48,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       src
       pnpmWorkspaces;
     fetcherVersion = 4;
-    hash = "sha256-J6GpHFSKaUPkT0OCl0+lLIEqYsFJLyaOiBYXSR3soH4=";
+    hash = "sha256-ESF+Lpk57t80JxbN6LCfm7AbuYwqqW/B/l0NlbBr2uk=";
   };
 
   patches = [
